@@ -1,4 +1,10 @@
 terraform {
+  cloud {
+    organization = "Basix"
+    workspaces {
+      name = "cluster"
+    }
+  }
   required_providers {
     scaleway = {
       source  = "scaleway/scaleway"
