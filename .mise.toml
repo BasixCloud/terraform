@@ -1,0 +1,8 @@
+[tools]
+terraform = "1.5.5"
+
+[env]
+_.file = '.env'
+
+[settings]
+legacy_version_file = false
