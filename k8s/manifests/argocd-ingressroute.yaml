@@ -12,7 +12,9 @@ spec:
       priority: 10
       services:
         - name: argocd-server
-          port: 80
+          port: 443
+          scheme: https
+          serversTransport: argocd-transport
       middlewares:
         - name: default-headers
     - kind: Rule

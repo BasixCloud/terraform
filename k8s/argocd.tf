@@ -18,6 +18,10 @@ data "kubernetes_secret" "argocd_initial_admin_secret" {
   depends_on = [module.argocd]
 }
 
+resource "kubernetes_manifest" "argocd_servers_transport" {
+  manifest = yamldecode(file("${path.module}/manifests/argocd-serverstransport.yaml"))
+}
+
 resource "kubernetes_manifest" "argocd_ingress_route" {
   manifest = yamldecode(file("${path.module}/manifests/argocd-ingressroute.yaml"))
 }
