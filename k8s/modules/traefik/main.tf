@@ -37,6 +37,6 @@ resource "helm_release" "traefik" {
 
   set {
     name = "serviceAccount.name"
-    value = kubernetes_service_account.traefik.id
+    value = kubernetes_service_account.traefik.metadata.name
   }
 }

@@ -11,6 +11,3 @@ resource "vault_auth_backend" "kubernetes" {
 #   kubernetes_host = data.tfe_outputs.cluster.values.host
 # }
 
-resource "vault_token" "terraform_automation" {
-  
-}
