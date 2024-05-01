@@ -3,6 +3,12 @@ terraform = "1.5.5"
 
 [env]
 _.file = '.env'
+KUBECONFIG = "{{config_root}}/.kubeconfig"
+
+[tasks.kubeconfig]
+dir = "./cluster"
+run = "terraform output -raw config_file > .kubeconfig"
 
 [settings]
 legacy_version_file = false
+experimental = true
