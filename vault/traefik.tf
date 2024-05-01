@@ -2,12 +2,8 @@ resource "vault_policy" "cloudflare" {
   name = "cloudflare"
 
   policy = <<EOT
-path "/kv2/cloudflare" {
-  capabilities = ["read"]
-}
-
-path "/v1/kv2/data/cloudflare" {
-  capabilities = ["read"]
+path "kv2/data/cloudflare" {
+  capabilities = ["read", "list"]
 }
 EOT
 }
