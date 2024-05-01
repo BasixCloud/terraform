@@ -13,3 +13,7 @@ resource "vault_kubernetes_auth_backend_config" "kubernetes" {
   token_reviewer_jwt = data.tfe_outputs.kubernetes.values.token_reviewer_jwt
 }
 
+# resource "vault_token" "traefik" {
+#   role_name = "traefik"
+#   policies = [vault_policy.cloudflare.name]
+# }
