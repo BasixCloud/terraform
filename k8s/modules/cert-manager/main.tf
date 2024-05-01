@@ -12,7 +12,7 @@ terraform {
 }
 
 module "cert_manager_crds" {
-  source    = "../modules/remote-manifest"
+  source    = "../../../modules/remote-manifest"
   url       = format("https://github.com/cert-manager/cert-manager/releases/download/v%s/cert-manager.crds.yaml", var.cert_manager_version)
   namespace = null # CRD definitions.
 }
