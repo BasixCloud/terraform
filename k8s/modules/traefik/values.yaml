@@ -16,7 +16,7 @@ certResolvers:
       provider: cloudflare
       resolvers:
         - 1.1.1.1
-    storage: /data/acme.json
+    storage: /ssl-certs/acme.json
 ingressRoute:
   dashboard:
     enabled: true
