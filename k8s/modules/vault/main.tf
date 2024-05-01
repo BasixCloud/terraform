@@ -32,6 +32,7 @@ resource "helm_release" "vault" {
 resource "kubernetes_service" "tempoary_vault_access" {
   metadata {
     namespace = kubernetes_namespace.namespace.id
+    name = "vault-access-svc"
   }
   spec {
     type = "LoadBalancer"
@@ -47,5 +48,6 @@ resource "kubernetes_service" "tempoary_vault_access" {
       target_port = 8200
     }
   }
+  depends_on = [helm_release.vault]
 }
 
