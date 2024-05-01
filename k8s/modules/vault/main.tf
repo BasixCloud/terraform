@@ -48,6 +48,12 @@ resource "kubernetes_service" "tempoary_vault_access" {
       target_port = 8200
     }
   }
+  lifecycle {
+    ignore_changes = [
+      metadata[0].annotations,
+      metadata[0].labels
+    ]
+  }
   depends_on = [helm_release.vault]
 }
 

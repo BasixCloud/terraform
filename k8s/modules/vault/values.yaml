@@ -5,12 +5,17 @@ injector:
   image:
     repository: hashicorp/vault-k8s
     tag: 1.4.1
-ha:
-  enabled: true
-  replicas: 3
-  raft:
+serverTelemetry:
+  serviceMonitor:
     enabled: true
-    setNodeId: true
 server:
+  ha:
+    enabled: true
+    replicas: 3
+    raft:
+      enabled: true
+      setNodeId: true
   logLevel: debug
   logFormat: standard
+  config: |-
+    {{ .Files.Get "config.hcl" }}
