@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: basix-cloud-staging
+  namespace: default
+spec:
+  secretName: basix-cloud-staging-tls
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: "*.basix.cloud"
+  dnsNames:
+  - basix.cloud
+  - "*.basix.cloud"
