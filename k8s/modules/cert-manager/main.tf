@@ -44,11 +44,9 @@ resource "helm_release" "cert_manager" {
 # cert-manager speicifc resource manifests
 resource "kubernetes_manifest" "manifests" {
   for_each = fileset(path.module, "manifests/*.yaml")
-  manifest = merge(
-    { metadata = { namespace = kubernetes_namespace.cert_manager.id } },
-    yamldecode(templatefile("${path.module}/${each.key}", {
-      email = var.email
-    }))
-  )
+  manifest = yamldecode(templatefile("${path.module}/${each.key}", {
+    email = var.email
+  }))
+
   depends_on = [module.cert_manager_crds]
 }
