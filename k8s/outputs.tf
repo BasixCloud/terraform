@@ -8,6 +8,6 @@ output "token_reviewer_jwt" {
   sensitive = true
 }
 
-# output "traefik_public_ip" {
-#   value = data.kubernetes_service.traefik_loadbalancer.status[0].loadBalancer.ingress[0].ip
-# }
+output "traefik_public_ip" {
+  value = data.kubernetes_service.traefik_loadbalancer.status[0].load_balancer[0].ingress[0].ip
+}
