@@ -40,3 +40,7 @@ resource "helm_release" "traefik" {
     value = kubernetes_service_account.traefik.metadata[0].name
   }
 }
+
+resource "kubernetes_manifest" "default_headers" {
+  manifest = yamldecode(file("${path.module}/manifests/default-headers.yaml"))
+}
