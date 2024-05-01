@@ -28,3 +28,9 @@ resource "kubectl_manifest" "argocd_install" {
   yaml_body          = each.value
   override_namespace = kubernetes_namespace.argocd.id
 }
+
+module "argocd" {
+  source = "../modules/remote-manifest"
+  url =  format("https://raw.githubusercontent.com/argoproj/argo-cd/%s/manifests/install.yaml", var.argocd_version)
+  namespace = "argocd"
+}
