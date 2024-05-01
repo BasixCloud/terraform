@@ -1,5 +1,5 @@
 output "namespace" {
-  value = var.namespace ? kubernetes_namespace.namespace[0].id : null
+  value = var.namespace != null ? kubernetes_namespace.namespace[0].id : null
 }
 
 output "id" {
