@@ -1,0 +1,16 @@
+ui:
+  enabled: true
+injector:
+  enabled: true
+  image:
+    repository: hashicorp/vault-k8s
+    tag: 1.4.1
+ha:
+  enabled: true
+  replicas: 3
+  raft:
+    enabled: true
+    setNodeId: true
+server:
+  logLevel: debug
+  logFormat: standard
