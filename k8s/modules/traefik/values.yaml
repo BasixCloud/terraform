@@ -31,8 +31,8 @@ deployment:
   podAnnotations:
     vault.hashicorp.com/agent-inject: 'true'
     vault.hashicorp.com/agent-inject-template-cloudflare: |
-      {{`{{- with secret "kv/cloudflare" -}}
-      {{ .Data.Value }}
+      {{`{{- with secret "kv2/cloudflare" -}}
+      {{ .Data["CF_DNS_API_TOKEN"] }}
       {{- end }}`}}
     vault.hashicorp.com/role: traefik
     vault.hashicorp.com/log-level: debug
