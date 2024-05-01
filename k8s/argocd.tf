@@ -18,6 +18,10 @@ data "kubernetes_secret" "argocd_initial_admin_secret" {
   depends_on = [module.argocd]
 }
 
+resource "kubernetes_manifest" "argocd_ingress_route" {
+  manifest = yamldecode(file("${path.module}/manifests/argocd-ingressroute.yaml"))
+}
+
 moved {
   from = kubectl_manifest.argocd_install
   to = module.argocd.kubectl_manifest.manifest
