@@ -28,7 +28,7 @@ resource "helm_release" "cert_manager" {
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
   version    = var.cert_manager_version
-  namespace  = kubernetes_namespace.prometheus.id
+  namespace  = kubernetes_namespace.cert_manager.id
 
   set {
     name  = "replicaCount"
