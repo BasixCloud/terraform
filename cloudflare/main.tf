@@ -32,6 +32,6 @@ resource "cloudflare_record" "basix_cloud_wildcard" {
   name    = "*"
   type    = "A"
   proxied = true
-  value   = data.tfe_outputs.kubernetes.values.traefik_public_ip
+  value   = data.tfe_outputs.kubernetes.nonsensitive_values.traefik_public_ip
 }
 
