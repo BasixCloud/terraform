@@ -15,11 +15,11 @@ terraform {
       version = "2.13.1"
     }
     http = {
-      source = "hashicorp/http"
+      source  = "hashicorp/http"
       version = "3.4.2"
     }
     kubectl = {
-      source = "alekc/kubectl"
+      source  = "alekc/kubectl"
       version = "2.0.4"
     }
     tfe = {
@@ -51,7 +51,7 @@ provider "helm" {
   kubernetes {
     host                   = data.tfe_outputs.cluster.values.host
     token                  = data.tfe_outputs.cluster.values.token
-    cluster_ca_certificate = data.tfe_outputs.cluster.values.cluster_ca_certificate
+    cluster_ca_certificate = base64decode(data.tfe_outputs.cluster.values.cluster_ca_certificate)
   }
 }
 
