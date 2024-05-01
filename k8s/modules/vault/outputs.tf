@@ -3,6 +3,6 @@ output "namespace_id" {
 }
 
 output "token_reviewer_jwt" {
-  value = kubernetes_secret.vault_auth_token.binary_data.token
+  value = kubernetes_secret.vault_auth_token.data.token
   sensitive = true
 }
