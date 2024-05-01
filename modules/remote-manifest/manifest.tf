@@ -21,5 +21,5 @@ data "kubectl_file_documents" "documents" {
 resource "kubectl_manifest" "manifest" {
   for_each           = data.kubectl_file_documents.documents.manifests
   yaml_body          = each.value
-  override_namespace = kubernetes_namespace.namespace.id
+  override_namespace = var.namespace ? kubernetes_namespace.namespace[0].id : null
 }
