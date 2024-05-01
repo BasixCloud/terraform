@@ -2,8 +2,8 @@ output "namespace" {
   value = var.namespace != null ? kubernetes_namespace.namespace[0].id : null
 }
 
-output "id" {
-  value = kubectl_manifest.manifest[*].id
+output "uid" {
+  value = kubectl_manifest.manifest[*].uid
 }
 
 output "kind" {
