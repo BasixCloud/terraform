@@ -19,7 +19,7 @@ resource "kubernetes_namespace" "namespace" {
 
 resource "kubernetes_service_account" "traefik" {
   metadata {
-    name = "traefik"
+    name      = "traefik"
     namespace = kubernetes_namespace.namespace.id
   }
 }
@@ -36,11 +36,12 @@ resource "helm_release" "traefik" {
   ]
 
   set {
-    name = "serviceAccount.name"
+    name  = "serviceAccount.name"
     value = kubernetes_service_account.traefik.metadata[0].name
   }
 }
 
 resource "kubernetes_manifest" "default_headers" {
-  manifest = yamldecode(file("${path.module}/manifests/default-headers.yaml"))
+  manifest   = yamldecode(file("${path.module}/manifests/default-headers.yaml"))
+  depends_on = [helm_release.traefik]
 }

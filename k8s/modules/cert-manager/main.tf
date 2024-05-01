@@ -47,4 +47,5 @@ resource "kubernetes_manifest" "manifests" {
   manifest = yamldecode(templatefile("${path.module}/${each.key}", {
     email = var.email
   }))
+  depends_on = [module.cert_manager_crds]
 }
