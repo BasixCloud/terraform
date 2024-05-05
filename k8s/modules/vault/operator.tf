@@ -23,3 +23,8 @@ resource "helm_release" "vault_secrets_operator" {
   ]
 }
 
+resource "kubernetes_manifest" "vault_static_auth" {
+  depends_on = [ helm_release.vault ]
+  manifest = file("${path.module}/vault-static-auth.yaml")
+}
+

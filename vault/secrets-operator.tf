@@ -22,5 +22,5 @@ resource "vault_kubernetes_auth_backend_role" "vso_kubernetes_role" {
   bound_service_account_namespaces = ["vault-secrets-operator-system"]
 
   audience = "vault"
-  token_policies = [vault_policy.vso_policy.id]
+  token_policies = [vault_policy.vso_policy.name, vault_policy.cloudflare.name]
 }
