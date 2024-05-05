@@ -1,16 +1,16 @@
 defaultVaultConnection:
   enabled: true
   address: "http://vault.vault.svc.cluster.local:8200"
-  skipTLSVerify: false
+  skipTLSVerify: true
 controller:
   manager:
     clientCache:
-      persistenceModel: none
-      # storageEncryption:
-      #   enabled: true
-      #   mount: kubernetes
-      #   keyName: vso-client-cache
-      #   transitMount: demo-transit
-      #   kubernetes:
-      #     role: auth-role-operator
-      #     serviceAccount: demo-operator
+      persistenceModel: direct-encrypted
+      storageEncryption:
+        enabled: true
+        mount: kubernetes
+        keyName: vso-client-cache
+        transitMount: transit
+        kubernetes:
+          role: auth-role-operator
+          serviceAccount: operator
