@@ -4,6 +4,13 @@ resource "kubernetes_namespace" "vault_secrets_operator" {
   }
 }
 
+resource "kubernetes_service_account" "vault_secrets_operator" {
+  metadata {
+    name      = "operator"
+    namespace = kubernetes_namespace.vault_secrets_operator.id
+  }
+}
+
 resource "helm_release" "vault_secrets_operator" {
   name       = "vault-secrets-operator"
   repository = "https://helm.releases.hashicorp.com"
