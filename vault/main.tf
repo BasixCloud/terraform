@@ -15,6 +15,7 @@ terraform {
       version = "4.2.0"
     }
   }
+  required_version = "~> 1.6.6"
 }
 
 data "tfe_outputs" "cluster" {

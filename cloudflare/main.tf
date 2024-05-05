@@ -16,6 +16,7 @@ terraform {
       version = "0.54.0"
     }
   }
+  required_version = "~> 1.6.6"
 }
 
 provider "cloudflare" {
