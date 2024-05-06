@@ -24,7 +24,7 @@ resource "helm_release" "vault_secrets_operator" {
 }
 
 resource "kubernetes_manifest" "vault_static_auth" {
-  depends_on = [ helm_release.vault ]
-  manifest = yamldecode(file("${path.module}/vault-static-auth.yaml"))
+  depends_on = [helm_release.vault]
+  manifest   = yamldecode(file("${path.module}/vault-static-auth.yaml"))
 }
 
